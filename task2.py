@@ -1,8 +1,4 @@
-#inverted index generation
-#
-
 import pickle
-
 import pandas as pd
 from collections import defaultdict
 from task1 import preprocess_text, remove_stop_words
@@ -29,11 +25,19 @@ def parse_passage(passage: str, inverted_index: dict, passage_id: int):
 def gen_inverted_index():
     "create inverted index, save to file, and return it"
     with open(DATA, 'r') as f:
-        df = pd.read_csv(f, sep='\t', header=None, names=['qid','pid','query','passage'])
+        df = pd.read_csv(
+            DATA,
+            sep="\t",
+            header=None,
+            names=["qid", "pid", "query", "passage"],
+            dtype={"qid": str, "pid": str}, 
+            encoding="utf-8",
+            engine="python"  
+    )
 
     inverted_index = {}
     for index, row in df.iterrows():
-        parse_passage(row['passage'], inverted_index, row['passage_id'])
+        parse_passage(row['passage'], inverted_index, row['pid'])
     
     with open(INVERTED_INDEX, 'wb') as f:
         pickle.dump(inverted_index, f)
@@ -51,11 +55,8 @@ def load_inverted_index():
 
 
 def task2():
-    pass
-
-
-    # inverted_index = load_inverted_index()
-    # print(inverted_index)
+    inverted_index = load_inverted_index()
+    return inverted_index
 
 
 
