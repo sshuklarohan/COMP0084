@@ -3,9 +3,10 @@ from collections import defaultdict
 import matplotlib.pyplot as plt
 
 DATA = "cw-data/passage-collection.txt"
-FIGURE_1_TITLE = "Figure 1"
-FIGURE_2_TITLE = "Figure 2"
-FIGURE_3_TITLE = "Figure 3"
+#TODO: More descriptive figure names?
+FIGURE_1_TITLE = "Figure_1"
+FIGURE_2_TITLE = "Figure_2"
+FIGURE_3_TITLE = "Figure_3"
 # From NLTK's list of stop words
 STOP_WORDS = set(
     [
@@ -167,7 +168,7 @@ def zipf_distribution(N: int, s: float = 1.0) -> list[float]:
     normalizer = sum((1 / (i**s)) for i in range(1, N + 1))
     return [(1 / (k**s)) / normalizer for k in range(1, N + 1)]
 
-def plot_freq_rank(counts: dict[str, int], title: str, is_log_scale: bool = False):
+def plot_freq_rank(counts: dict[str, int], title: str, is_log_scale: bool = False, save_file: bool = False):
     sorted_freqs = sorted(counts.values(), reverse=True)
     ranks = range(1, len(sorted_freqs) + 1)
     zipf_probs = zipf_distribution(len(sorted_freqs), s=1)
@@ -186,7 +187,10 @@ def plot_freq_rank(counts: dict[str, int], title: str, is_log_scale: bool = Fals
     plt.ylabel("Probability of occurrence")
     plt.title(title)
     plt.legend()
-    plt.show()
+    if save_file:
+        plt.savefig(f"{title}.svg", format="svg")
+    else:
+        plt.show()
 
 
 def task1():
@@ -199,9 +203,9 @@ def task1():
     vocab_size = len(word_count)
     print(f"Vocabulary Size: {vocab_size}")
 
-    plot_freq_rank(norm_freq, FIGURE_1_TITLE, is_log_scale=False)
+    plot_freq_rank(norm_freq, FIGURE_1_TITLE, is_log_scale=False, save_file = True)
 
-    plot_freq_rank(norm_freq, FIGURE_2_TITLE, is_log_scale=True)
+    plot_freq_rank(norm_freq, FIGURE_2_TITLE, is_log_scale=True, save_file = True)
 
     tokens_without_stopwords = remove_stop_words(tokens)
     word_count_no_stop = count_occurences(tokens_without_stopwords)
@@ -209,8 +213,8 @@ def task1():
     vocab_size_no_stop = len(word_count_no_stop)
 
     print(f"Vocabulary Size after stop-word removal: {vocab_size_no_stop}")
-    plot_freq_rank(norm_freq_no_stop, FIGURE_3_TITLE, is_log_scale=True)
-    #PLOTS SHOULD SAVE AS THE ZOOMABLE FORMAT TALKED ABOUT IN THE SLIDES
+    plot_freq_rank(norm_freq_no_stop, FIGURE_3_TITLE, is_log_scale=True, save_file = True)
+
 
 
 if __name__ == "__main__":
