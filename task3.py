@@ -122,9 +122,9 @@ def task3():
     tf_dict = get_tf_dict(inverted_index)
     idf_dict = get_idf_dict(inverted_index, total_docs= num_candidate_passages)
 
-    # print("-----starting bm25 generation-----")
-    # generate_bm25_csv(queries_df, candidate_passages_df, document_lengths, tf_dict, idf_dict)
-    # print("-----completed bm25 generation-----")
+    print("-----starting bm25 generation-----")
+    generate_bm25_csv(queries_df, candidate_passages_df, document_lengths, tf_dict, idf_dict)
+    print("-----completed bm25 generation-----")
 
     print("-----starting tfidf generation-----")
     generate_tfidf_csv(queries_df, candidate_passages_df, document_lengths, tf_dict, idf_dict)
