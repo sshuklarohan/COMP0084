@@ -109,9 +109,6 @@ def load_document_lengths(candidate_passages_df: pd.DataFrame) -> dict[int, int]
         doc_lengths[pid] = len(processed_passage)
     return doc_lengths
 
-
-#When done test the BM25 implementation against the dummy data from slides
-
 def task3(): 
     candidate_passages_df = read_tsv_data(PASSAGES_PATH, names=["qid", "pid", "query", "passage"], dtype={"qid": str, "pid": str})
     num_candidate_passages = candidate_passages_df['pid'].nunique()
@@ -136,3 +133,6 @@ def task3():
 
 if __name__ == "__main__":
     task3()
+
+
+
