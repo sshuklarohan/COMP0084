@@ -1,0 +1,60 @@
+
+
+Query: What are the social determinants of health
+
+Top 3 in laplace: 
+PID, 3365633, 3146238, 3365631
+
+1. Determinants of health are factors that contribute to a person's current state of health. These factors may be biological, socioeconomic, psychosocial, behavioral, or social in nature. Scientists generally recognize five determinants of health of a population [2, 3]: 1  Genes and biology: for example, sex and age.hese social determinants of health also interact with and influence individual behaviors as well. More specifically, social determinants of health refer to the set of factors that contribute to the social patterning of health, disease, and illness.
+
+2. Social determinants of health are economic and social conditions that influence the health of people and communities [1]. These conditions are shaped by the amount of money, power, and resources that people have, all of which are influenced by policy choices.Social determinants of health affect factors that are related to health outcomes.eterminants of health are factors that contribute to a person's current state of health. These factors may be biological, socioeconomic, psychosocial, behavioral, or social in nature. Scientists generally recognize five determinants of health of a population [2, 3]: 1  Genes and biology: for example, sex and age.
+
+3. Figure 1. Estimates of how each of the five major determinants influence population health [4]. Other factors that could be included are culture, social status, and healthy child development. Figure 1 represents rough estimates of how much each of the five determinants contributes to the health of a population.hese social determinants of health also interact with and influence individual behaviors as well. More specifically, social determinants of health refer to the set of factors that contribute to the social patterning of health, disease, and illness.
+
+bottom 3
+PID 1551805,7609932, 3365634 
+
+1. Key employers of gerontological social workers include nursing care facilities and home health-care service providers. The BLS reported in 2011 that annual salaries for gerontological social workers in nursing care facilities averaged $45,230.Gerontological specialists in home health-care agencies earned more, with their salaries averaging $55,020 per year. Related Reading: Salary for a Forensic Social Worker.ey employers of gerontological social workers include nursing care facilities and home health-care service providers. The BLS reported in 2011 that annual salaries for gerontological social workers in nursing care facilities averaged $45,230.
+
+
+2. Factors that contribute to a person's current state of health. These factors may be biological, socioeconomic, psychosocial, behavioral, or social in nature. Scientists generally recognize five determinants of health of a population: 1  Biology and genetics. 2  Examples: sex and age.3  Individual behavior.hen a person or group of people lack human needs because they cannot afford them. Human needs include clean water, nutrition, health care, education, clothing, and shelter. The U.S. Social Security Administration originally developed the definitions that are used to help calculate and determine poverty.
+
+3. Health Behaviours. Many of the underlying health determinants influence health via personal behaviours. For example, a lack of exercise, high-fat diet, and alcohol or tobacco consumption form personal risk factors for disease, whereas regular activity and a healthy diet confer health benefits.Smoking.ealth Behaviours. Many of the underlying health determinants influence health via personal behaviours. For example, a lack of exercise, high-fat diet, and alcohol or tobacco consumption form personal risk factors for disease, whereas regular activity and a healthy diet confer health benefits. Smoking.
+
+
+
+Top 3 in Dirichlet
+PID, 2417985, 7384325, 394139
+
+1. Social determinants. 1  Commission on Social Determinants of Health. 2  Socioeconomic Determinants of Health. 3  Social Determinants of Health.  Public Health Agency of 1  Canada. Childcare resource and research unit.  Inclusive Cities Canada.
+
+2. Catholic Health Australia-National Centre for Social and Economic Modelling: Second Report on Health Inequalities: The cost of inaction on the social determinants of health Catholic Health Australia-National Centre for social and economic modelling: second report on health inequalities: the cost of inaction on the social determinants of health
+
+3. Social determinants of health - Commonly accepted determinants. 1  There is no single definition of the social determinants of health, but there are commonalities, and many governmental and non-governmental organizations recognize that there are social factors which impact the health of individuals.
+
+bottom 3
+
+2886622, 4017883, 3059593
+
+1. Definitions for health promotion. Health promotion. Health promotion has been defined by the World Health Organization's 2005 Bangkok Charter for Health Promotion in a Globalized World as the process of enabling people to increase control over their health and its determinants, and thereby improve their health.
+
+2. In the spirit of social justice, the Commission on Social. Determinants of Health was set up by the World Health. Organization (WHO) in 2005 to marshal the evidence. on what can be done to promote health equity, and to. foster a global movement to achieve it. As the Commission has done its work, several.
+
+3. These determinants—or things that make people healthy or not—include the above factors, and many others: 1  Income and social status - higher income and social status are linked to better health.  Education – low education levels are linked with poor health, more stress and lower self-confidence.
+
+
+
+
+
+
+Top 3 in lidstone == laplace
+3365633, 3146238, 3365631
+
+bottom 3
+5721829, 4853172,5733261 
+
+1. © Zoltan Balogh. The social determinants of health (SDH) are the conditions in which people are born, grow, work, live, and age, and the wider set of forces and systems shaping the conditions of daily life. These forces and systems include economic policies and systems, development agendas, social norms, social policies and political systems.
+
+2. The social determinants of health were drilled into me, while the concept of community organizing for health ignited my desire for change in the health care system. I was sure at the end of this degree that I would apply in family medicine and treat the community as my patient, one family at a time.
+
+3. The English national provider of information about health and social care is the Health and Social Care Information Centre HSCIC. It can also refer to a range of vocational and academic courses which can be taken at various academic and vocational levels from GNVQ, A-Level, S/NVQ, to degrees.In Canada and the United-States, health and social care is frequently referred to as  Human Services .As a subject discipline, Health and Social Care (H&SC) combines elements of sociology, biology, nutrition, law, and ethics.n Canada and the United-States, health and social care is frequently referred to as  Human Services . As a subject discipline, Health and Social Care (H&SC) combines elements of sociology, biology, nutrition, law, and ethics.

@@ -2,5 +2,4 @@ cw-data/
 __pycache__/
 Figure_*.svg
 inverted_index.pkl
-tfidf.csv
-bm25.csv
+*.csv

@@ -1,7 +1,7 @@
 import re
 from collections import defaultdict
 import matplotlib.pyplot as plt
-
+import numpy as np
 DATA = "cw-data/passage-collection.txt"
 #TODO: More descriptive figure names?
 FIGURE_1_TITLE = "Figure_1"
@@ -168,9 +168,15 @@ def zipf_distribution(N: int, s: float = 1.0) -> list[float]:
     normalizer = sum((1 / (i**s)) for i in range(1, N + 1))
     return [(1 / (k**s)) / normalizer for k in range(1, N + 1)]
 
+def theoretical_zipf_C(N):
+    H_N = np.sum(1 / np.arange(1, N + 1))
+    return 1 / H_N
+
 def plot_freq_rank(counts: dict[str, int], title: str, is_log_scale: bool = False, save_file: bool = False):
     sorted_freqs = sorted(counts.values(), reverse=True)
-    ranks = range(1, len(sorted_freqs) + 1)
+    top_5 = sorted(counts, key=counts.get, reverse=True)[:5]
+    print(f"Top 5 most frequent terms in {title}:, {top_5}")
+    ranks = np.arange(1, len(sorted_freqs) + 1)
     zipf_probs = zipf_distribution(len(sorted_freqs), s=1)
     plt.figure(figsize=(8, 6))
     plt.plot(ranks, sorted_freqs, label="Normalised frequency")
@@ -187,6 +193,10 @@ def plot_freq_rank(counts: dict[str, int], title: str, is_log_scale: bool = Fals
     plt.ylabel("Probability of occurrence")
     plt.title(title)
     plt.legend()
+    K = sorted_freqs * ranks
+    empirical_mean_K = np.mean(K)
+    print(f"Figure {title}: Mean of K = rank * frequency: {empirical_mean_K:.4f} vs theoretical C = {theoretical_zipf_C(len(sorted_freqs)):.4f}")
+    print()
     if save_file:
         plt.savefig(f"{title}.svg", format="svg")
     else:

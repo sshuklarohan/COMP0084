@@ -1,7 +1,7 @@
 
 
 import math
-
+from collections import Counter
 from task1 import preprocess_text
 from task2 import load_inverted_index, read_tsv_data
 import pandas as pd
@@ -16,13 +16,10 @@ def get_tf_dict(inverted_index: dict[str, dict[int, int]]) -> dict[str, dict[int
     #NOTE if we decide to make the inverted index more complex we will have to simplify this function to return the correct tf
 
 def get_idf_dict(inverted_index: dict[str, dict[int, int]], total_docs: int) -> dict[str, float]:
-    idf_dict = {}
-    for word, passages in inverted_index.items():
-        doc_frequency = len(passages)
-        idf_dict[word] = math.log(total_docs / doc_frequency)
-        if word == "definition":
-            print(f"Word: {word}, Doc Frequency: {doc_frequency}, IDF: {idf_dict[word]}")  
-    return idf_dict
+    return {
+        word: math.log(total_docs / len(postings))
+        for word, postings in inverted_index.items()
+    }
 
 
 def cosine_similarity(query, doc_id, tf_dict, idf_dict):
@@ -34,12 +31,12 @@ def cosine_similarity(query, doc_id, tf_dict, idf_dict):
 
 def calc_bm25_score(query_tokens, doc_id, tf_dict, idf_dict, k1, k2, b, doc_length, avg_doc_length):
     score = 0
-    query_freq = {word: query_tokens.count(word) for word in query_tokens}
+    query_freq = Counter(query_tokens)
+    K = k1 * ((1 - b) + b * (doc_length / avg_doc_length))
     for word in query_tokens:
         if word in tf_dict and doc_id in tf_dict[word]:
             tf = tf_dict[word][doc_id]
             idf = idf_dict.get(word, 0)
-            K = k1 * ((1 - b) + b * (doc_length / avg_doc_length))
             score += idf * ((tf * (k1 + 1)) / (tf + K)) * ((k2 + 1) * query_freq[word]) / (k2 + query_freq[word])
     return score
 
@@ -99,15 +96,10 @@ def generate_bm25_csv(queries_df: pd.DataFrame, candidate_passages_df: pd.DataFr
     output_df.to_csv("bm25.csv", index=False, header=False)
 
 def load_document_lengths(candidate_passages_df: pd.DataFrame) -> dict[int, int]:
-    doc_lengths = {}
-    for _, row in candidate_passages_df.iterrows():
-        pid = row['pid']
-        if pid in doc_lengths:
-            continue
-        passage = row['passage']
-        processed_passage = preprocess_text(passage)
-        doc_lengths[pid] = len(processed_passage)
-    return doc_lengths
+    df_unique = candidate_passages_df.drop_duplicates(subset='pid')
+    processed = df_unique['passage'].apply(preprocess_text)
+    lengths = processed.apply(len)
+    return dict(zip(df_unique['pid'], lengths))
 
 def task3(): 
     candidate_passages_df = read_tsv_data(PASSAGES_PATH, names=["qid", "pid", "query", "passage"], dtype={"qid": str, "pid": str})

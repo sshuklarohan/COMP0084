@@ -29,19 +29,18 @@ def parse_passage(passage: str, inverted_index: dict, passage_id: int):
         inverted_index[token][passage_id] += 1
     
 
-def gen_inverted_index():
+def gen_inverted_index(df: pd.DataFrame, is_save: bool = False) -> dict:
     "create inverted index, save to file, and return it"
-    df = read_tsv_data(DATA, names=["qid", "pid", "query", "passage"], dtype={"qid": str, "pid": str})
 
     inverted_index = {}
-    seen_passages = set()
-    for _, row in df.iterrows():
-        if row['pid'] not in seen_passages:
-            seen_passages.add(row['pid'])
-            parse_passage(row['passage'], inverted_index, row['pid'])
+    unique_df = df.drop_duplicates(subset='pid')
     
-    with open(INVERTED_INDEX, 'wb') as f:
-        pickle.dump(inverted_index, f)
+    for pid, passage in zip(unique_df['pid'], unique_df['passage']):
+        parse_passage(passage, inverted_index, pid)
+    
+    if is_save:
+        with open(INVERTED_INDEX, 'wb') as f:
+            pickle.dump(inverted_index, f)
     return inverted_index
 
 
@@ -50,7 +49,8 @@ def load_inverted_index():
         with open(INVERTED_INDEX, 'rb') as f:
             inverted_index = pickle.load(f)
     except (FileNotFoundError, EOFError, pickle.UnpicklingError):
-        inverted_index = gen_inverted_index()
+        df = read_tsv_data(DATA, names=["qid", "pid", "query", "passage"], dtype={"qid": str, "pid": str})
+        inverted_index = gen_inverted_index(df, is_save=True)
     return inverted_index
 
 
